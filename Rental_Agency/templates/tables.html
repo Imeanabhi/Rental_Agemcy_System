@@ -1,0 +1,15 @@
+<!-- templates/tables.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tables</title>
+</head>
+<body>
+    <h2>Tables in Database</h2>
+    <ul>
+        {% for table in tables %}
+        <li><a href="{{ url_for('show_data', table_name=table[0]) }}">{{ table[0] }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

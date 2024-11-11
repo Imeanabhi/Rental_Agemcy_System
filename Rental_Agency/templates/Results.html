@@ -1,0 +1,25 @@
+<!-- templates/query_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Query Results</title>
+</head>
+<body>
+    <h2>Results for {{ table_name or 'Custom Query' }}</h2>
+    <table border="1">
+        <tr>
+            {% for col in columns %}
+            <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+        <tr>
+            {% for col in columns %}
+            <td>{{ row[col] }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
