@@ -1,15 +1,55 @@
-<!-- templates/tables.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Tables</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables - Rental Agency</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #1e3d58;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a.back {
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
-    <h2>Tables in Database</h2>
+    <h1>Database Tables</h1>
     <ul>
         {% for table in tables %}
-        <li><a href="{{ url_for('show_data', table_name=table[0]) }}">{{ table[0] }}</a></li>
+            <li><a href="{{ url_for('show_data', table_name=table[0]) }}">{{ table[0] }}</a></li>
         {% endfor %}
     </ul>
+    <a href="{{ url_for('home') }}" class="back">Back to Home</a>
 </body>
 </html>

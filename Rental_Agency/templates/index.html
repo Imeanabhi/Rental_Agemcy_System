@@ -1,17 +1,149 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Rental Agency Database</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Rental Agency</title>
+    <style>
+        /* General page styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+            background-image: url('https://www.w3schools.com/w3images/house.jpg'); /* Image related to rental agency */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Gradient overlay to darken background */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            z-index: 1;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        p {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+            z-index: 1;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Style for links */
+        a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #ffffff;
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: #007bff;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            z-index: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        a:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Style for form */
+        form {
+            margin-top: 30px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            width: 80%;
+            z-index: 1;
+        }
+
+        form textarea {
+            width: 100%;
+            height: 150px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            resize: vertical;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            p, form textarea, form input[type="submit"] {
+                font-size: 14px;
+            }
+
+            a {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Rental Agency Database Management System</h1>
-    <nav>
-        <ul>
-            <li><a href="/show_tables">Show Tables</a></li>
-            <li><a href="/Queries">Run Custom Query</a></li>
-        </ul>
-    </nav>
+    <!-- Gradient overlay for darker background -->
+    <div class="overlay"></div>
+
+    <h1>Welcome to the Rental Agency</h1>
+    <p>Explore rental options, manage properties, and more!</p>
+
+    <!-- Links to different pages -->
+    <a href="{{ url_for('show_tables') }}">Show All Tables</a>
+    <a href="{{ url_for('phone_details') }}">View Phone Details</a>
+    <a href="/Properties" class="btn btn-primary">View Properties by Manager</a>
+    <a href="/No_Brokers" class="btn btn-primary">Users With No Brokers</a>
+    <a href="/add_payment" class="btn btn-primary">Add a Payment</a>
+    
+    <h2>Run a Custom Query</h2>
+    <form action="{{ url_for('custom_query') }}" method="POST">
+        <textarea name="query" rows="4" placeholder="Write your SQL query here..."></textarea><br>
+        <input type="submit" value="Execute Query">
+    </form>
 </body>
 </html>

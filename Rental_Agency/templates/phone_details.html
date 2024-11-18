@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Details - Rental Agency</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Phone Details</h1>
+
+    <!-- Form to input Adhar ID -->
+    <form method="POST">
+        <label for="adhar_id">Enter Adhar ID:</label>
+        <input type="text" name="adhar_id" required>
+        <input type="submit" value="Get Details">
+    </form>
+
+    <!-- Display Results if Available -->
+    {% if phone_details %}
+        <h2>Phone Details for Adhar ID: {{ request.form['adhar_id'] }}</h2>
+        <table>
+            <tr>
+                <th>Phone Number</th>
+                <th>Broker Name</th>
+                <th>Broker Phone</th>
+            </tr>
+            {% for row in phone_details %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
