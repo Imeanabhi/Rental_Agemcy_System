@@ -1,0 +1,4 @@
+USE RentalAgency;
+SHOW TABLES;
+
+
